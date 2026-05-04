@@ -7,10 +7,10 @@ Sistema de cadastro web que coleta dados de leads (nome, email e número) e os e
 ## 🚀 Como funciona
 
 ```
-site.html → API (Node.js) → n8n → Planilha + WhatsApp + Email
+cadastro.html → API (Node.js) → n8n → Planilha + WhatsApp + Email
 ```
 
-1. O usuário preenche o formulário no `site.html`
+1. O usuário preenche o formulário no `cadastro.html`
 2. Os dados são enviados para a API em Node.js
 3. A API repassa os dados para o webhook do n8n
 4. O n8n salva na planilha e envia mensagens automáticas
@@ -20,9 +20,9 @@ site.html → API (Node.js) → n8n → Planilha + WhatsApp + Email
 ## 📁 Estrutura do projeto
 
 ```
-├── site.html            # Página de cadastro
+├── cadastro.html            # Página de cadastro
 ├── outrapagina.html     # Página de confirmação
-├── server.js            # API Node.js
+├── api.js            # API Node.js
 └── README.md
 ```
 
@@ -50,16 +50,16 @@ cd seu-repositorio
 
 **2. Inicie a API:**
 ```bash
-node server.js
+node api.js
 ```
 
-**3. Abra o `site.html` no navegador**
+**3. Abra o `cadastro.html` no navegador**
 
 ---
 
 ## 🔧 Configuração
 
-No `server.js`, troque o ID do webhook pelo seu:
+No `api.js`, troque o ID do webhook pelo seu:
 
 ```javascript
 path: "/webhook/seu-id-aqui"
