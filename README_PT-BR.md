@@ -20,9 +20,12 @@ cadastro.html → API (Node.js) → n8n → Planilha + WhatsApp + Email
 ## 📁 Estrutura do projeto
 
 ```
-├── cadastro.html            # Página de cadastro
-├── outrapagina.html     # Página de confirmação
-├── api.js            # API Node.js
+├── cadastro.html               # Registration page
+├── cadastro_realizado.html     # Confirmation page
+├── api.js                      # Node.js API
+├── env.example                 # env data
+├── package.json                # package data
+├── workflow.json               # n8n workflow
 └── README.md
 ```
 
