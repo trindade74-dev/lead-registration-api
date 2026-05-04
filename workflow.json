@@ -1,0 +1,195 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "13252882-fbd9-4741-b5a8-2eae728c7c7f",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        32,
+        0
+      ],
+      "id": "226a03d4-14b4-4948-80b6-979853fa2e7c",
+      "name": "Webhook",
+      "webhookId": "13252882-fbd9-4741-b5a8-2eae728c7c7f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5616e713-25b6-426b-9ecb-9de70b4006c0",
+              "name": "nome",
+              "value": "={{ $json.body.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "469bfd63-34c5-4ccc-ba33-91160cd6ae27",
+              "name": "numero",
+              "value": "={{ $json.body.numero }}",
+              "type": "string"
+            },
+            {
+              "id": "aa5fa5d6-b59f-4306-9e32-d4aacdadd7f6",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "id": "ee3fbb99-9282-4261-8c97-2ad56f3ffcd5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1TDUdcoI6r9MYrNLEcREYUfpOUOMFouN9YWQwQ3ffYh4",
+          "mode": "list",
+          "cachedResultName": "worktest",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TDUdcoI6r9MYrNLEcREYUfpOUOMFouN9YWQwQ3ffYh4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TDUdcoI6r9MYrNLEcREYUfpOUOMFouN9YWQwQ3ffYh4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $json.nome }}",
+            "Numero": "={{ $json.numero }}",
+            "Email": "={{ $json.email }}"
+          },
+          "matchingColumns": [
+            "Nome"
+          ],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Numero",
+              "displayName": "Numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        0
+      ],
+      "id": "a4ebd8b7-5755-46b2-808d-10358ab43573",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "GScGh0R3XTAjQhhF",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Edit Fields').item.json.email }}",
+        "subject": "Cadastro confirmado!",
+        "message": "=<!DOCTYPE html>\n<html lang=\"pt-br\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale= 1.0\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n        <title>Cadastro Realizado</title>\n        <style>\n            * {\n                box-sizing: border-box;\n                margin: 0;\n                padding: 0;\n            }\n\n            body {\n                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\n                background: #0d1117;\n                color: #e6edf3;\n                display: flex;\n                flex-direction: column;\n                justify-content: center;\n                align-items: center;\n                min-height: 100vh;\n                gap: 20px;\n            }\n\n            .logo {\n                font-size: 48px;\n                /* Intentionally left minimal for logo styling */\n            }\n\n            .card {\n                background: #161b22;\n                border: 1px solid #30363d;\n                border-radius: 6px;\n                padding: 24px;\n                width: 100%;\n                max-width: 340px;\n            }\n\n            h1 {\n                font-size: 20px;\n                font-weight: 300;\n                color: #e6edf3;\n                text-align: center;\n                margin-bottom: 20px;\n            }\n\n            label {\n                display: block;\n                font-size: 13px;\n                font-weight: 600;\n                color: #e6edf3;\n                margin-bottom: 6px;\n            }\n\n            input {\n                width: 100%;\n                padding: 5px 12px;\n                background: #0d1117;\n                border: 1px solid #30363d;\n                border-radius: 6px;\n                color: #e6edf3;\n            }\n        </style>\n        <body>\n              <div class=\"caixa\">\n              <div class=\"logo\" style=\"color: #238636; font-size: 48px; text-align: center; margin-bottom: 20px;\"> 💡 </div> \n                <h1>Cadastro Realizado!</h1>\n                <p>Olá,</p>\n                <p>Seu cadastro foi realizado com sucesso!</p>\n                <p>Atenciosamente,<br>Matheus Trindade </p>\n                <br>\n                <button class=\"button\" onclick=\"window.location.href='...'\">Abrir aplicação</button>\n                </div>\n\n            <style>\n                .caixa{\n                \n                background: #161b22;\n                border: 1px solid #30363d;\n                border-radius: 6px;\n                padding: 16px;\n                color: #e6edf3;\n                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\n                font-size: 14px;\n                text-align: center;}\n\n                .button {\n                width: 100%;\n                padding: 5px 16px;\n                background: #238636;\n                color: #ffffff;\n                font-size: 14px;\n                font-weight: 500;\n                border: 1px solid rgba(240, 246, 252, 0.1);\n                border-radius: 6px;\n                cursor: pointer;\n                height: 32px;\n                transition: background 0.2s;}\n            </style>\n        </body>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "655b232b-2f23-49e9-ac05-344b14a3c9fe",
+      "name": "Send a message",
+      "webhookId": "e1e5a1a9-f27f-4fc1-9cf2-6c34093c550b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7MHLnDLpcsaCdI3C",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c56e09ab1c52684cad79bb4d81f05acb164eaf34c21bc779cc6706b5ee992c4e"
+  }
+}
