@@ -1,17 +1,20 @@
 {
-  "name": "cadastro-n8n",
+  "name": "lead-registration-api",
   "version": "1.0.0",
-  "description": "Sistema de cadastro online com integração n8n",
+  "description": "Lead generation system via web form, with a Node.js API that integrates with n8n for automated notifications via WhatsApp, email, and spreadsheet registration.",
   "main": "api.js",
   "scripts": {
     "start": "node api.js"
   },
   "keywords": [
-    "n8n",
-    "cadastro",
-    "webhook",
-    "automacao"
+"n8n",
+    "registration",
+    "online",
+    "system",
+    "integration",
+    "api",
+    "webhook"
   ],
-  "author": "seu-nome",
+  "author": "trindade74-dev",
   "license": "MIT"
 }
