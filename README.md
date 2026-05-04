@@ -20,9 +20,12 @@ site.html → API (Node.js) → n8n → Spreadsheet + WhatsApp + Email
 ## 📁 Project structure
 
 ```
-├── site.html            # Registration page
-├── outrapagina.html     # Confirmation page
-├── server.js            # Node.js API
+├── cadastro.html               # Registration page
+├── cadastro_realizado.html     # Confirmation page
+├── api.js                      # Node.js API
+├── env.example                 # env data
+├── package.json                # package data
+├── workflow.json               # n8n workflow
 └── README.md
 ```
 
@@ -50,22 +53,22 @@ cd your-repository
 
 **2. Start the API:**
 ```bash
-node server.js
+node api.js
 ```
 
-**3. Open `site.html` in your browser**
+**3. Open `cadastro.html` in your browser**
 
 ---
 
 ## 🔧 Configuration
 
-In `server.js`, replace the webhook ID with yours:
+In `api.js`, replace the webhook ID with yours:
 
 ```javascript
 path: "/webhook/your-id-here"
 ```
 
-In `site.html`, make sure the port matches the server:
+In `cadastro.html`, make sure the port matches the server:
 
 ```javascript
 fetch("http://localhost:1234/cadastro", ...)
@@ -78,7 +81,6 @@ fetch("http://localhost:1234/cadastro", ...)
 The n8n workflow should contain:
 - **Webhook** — receives data from the API
 - **Google Sheets** — saves the registration to a spreadsheet
-- **WhatsApp** — sends a welcome message
 - **Email** — sends a confirmation to the lead
 
 ---
