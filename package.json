@@ -2,9 +2,9 @@
   "name": "cadastro-n8n",
   "version": "1.0.0",
   "description": "Sistema de cadastro online com integração n8n",
-  "main": "server.js",
+  "main": "api.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node api.js"
   },
   "keywords": [
     "n8n",
