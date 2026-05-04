@@ -68,7 +68,7 @@ No `api.js`, troque o ID do webhook pelo seu:
 path: "/webhook/seu-id-aqui"
 ```
 
-No `site.html`, confirme que a porta bate com o servidor:
+No `cadastro.html`, confirme que a porta bate com o servidor:
 
 ```javascript
 fetch("http://localhost:1234/cadastro", ...)
