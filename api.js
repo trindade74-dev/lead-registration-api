@@ -25,7 +25,7 @@ const server = http.createServer(function(req, res) {
     const options = {
         hostname: 'localhost',
         port: 5678,
-        path: "/webhook/13252882-fbd9-4741-b5a8-2eae728c7c7f",
+        path: "/webhook/your-id-here",
         method: 'POST',
         headers: {
             "content-type": "application/json",
